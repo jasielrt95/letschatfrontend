@@ -14,8 +14,8 @@ const LobbyWaiting = () => {
   };
 
   const copyURL = (id) => {
+    const BASE_URL = import.meta.env.VITE_BASE_URL + "lobby/";
     if (navigator.clipboard && window.isSecureContext) {
-      const BASE_URL = import.meta.env.VITE_BASE_URL + "lobby/";
       navigator.clipboard.writeText(BASE_URL + id).then(() => {
         setShowToast(true);
         setTimeout(() => setShowToast(false), 3000);
@@ -23,7 +23,7 @@ const LobbyWaiting = () => {
     } else {
       console.log("Clipboard not supported");
       console.log(BASE_URL + id);
-      
+
       // fallback to copying manually
       const textToCopy = BASE_URL + id;
       const input = document.createElement("input");
